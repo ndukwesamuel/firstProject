@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1> details</h1>
+
+   <h1>  {{object.title}} </h1>
+
+   <h1>{{object.author}}</h1>
+
+   <p>{{object.body}}</p>
+
+
+   <a href="{% url   'update'  object.pk  %}"> <button>Update</button></a>
+
+
+
+   {% endblock %}
+
+
