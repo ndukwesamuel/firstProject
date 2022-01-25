@@ -1,0 +1,94 @@
+Install the virtualenv package
+The virtualenv package is required to create virtual environments.
+You can install it with pip:
+
+
+
+pip install virtualenv   this is for installing..
+
+
+===> 
+
+Create the virtual environment
+To create a virtual environment, you must specify a path. For example to create one in the local directory called ‘mypython’, type the following:
+
+
+===> virtualenv  ENV
+
+
+Activate the virtual environment
+You can activate the python environment by running the following command:
+
+==>   for mac and linux OS, or gitbash terminal  (source ENV/scripts/activate )
+
+==>   Windows    ENV\Scripts\activate
+
+
+Deactivate the virtual environment
+To decativate the virtual environment and use your original Python environment, simply type ‘deactivate’.
+
+
+Create Django_project 
+
+for new enviroment ==> pip install django
+
+==> django-admin startproject name_of_project .
+
+===> python manage.py runserver
+
+
+==> Create an App called Home
+===> create a templates Folder inside  HOME
+===> create and external templates folder
+
+
+
+
+class base views
+
+
+https://docs.djangoproject.com/en/4.0/topics/class-based-views/
+
+
+
+TemplateView it use when you want to return  a template with a model
+
+VIEWS{
+    from django.views.generic import  TemplateView
+
+class HomeView(TemplateView):
+    template_name = "index.html"
+}
+from HOME.views import HomeView
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path("", HomeView.as_view(), name="home")
+]
+
+
+
+
+create model
+
+model{
+    
+
+class Post(models.Model):
+    author = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    body = models.TextField()
+
+    def __str__(self):
+        return f'{self.author} a==> {self.title} '
+    
+}
+
+
+create superuser
+python manage.py createsuperuser
+
+makemigrations 
+and migrate
+
+
+'new'
