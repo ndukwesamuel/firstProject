@@ -15,15 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from HOME.views import HomeListView, PostDetail, PostCreateView, PostUpdateView
+from HOME.views import ( HomeListView, PostDetail,
+         PostCreateView, PostUpdateView, )
+
+from django.contrib.auth.views import (
+    LoginView, 
+    LogoutView, 
+)
+
+
+from Member.views import SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path("", HomeListView.as_view(), name="home"),
 
     path("create/", PostCreateView.as_view(), name="create"),
 
     path("update/<int:pk>", PostUpdateView.as_view(), name="update"),
+
+
+    path("signup/", SignupView.as_view(), name="signup"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(), name="logout"),
+
+    
 
     path("<int:pk>", PostDetail.as_view(), name="Detail")
 
