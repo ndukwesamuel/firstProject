@@ -24,21 +24,26 @@ from django.contrib.auth.views import (
 )
 
 
-from Member.views import SignupView
+from Member.views import SignupView, ChangePassword ,password_sucess
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path("", HomeListView.as_view(), name="home"),
-
     path("create/", PostCreateView.as_view(), name="create"),
-
     path("update/<int:pk>", PostUpdateView.as_view(), name="update"),
-
-
     path("signup/", SignupView.as_view(), name="signup"),
     path("login/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
+
+
+
+    path("password/", ChangePassword.as_view(), name="change_password"),
+    path("password_sucess/", password_sucess, name="password_sucess"),
+
+
+
+
 
     
 
